@@ -1,6 +1,5 @@
-<img width="170" height="144" alt="stellarsend" src="https://github.com/user-attachments/assets/02614d2d-f331-42ab-88bc-9bcdea60315c" />
+# StellarSend <img width="42" height="36" alt="stellarsend" src="https://github.com/user-attachments/assets/02614d2d-f331-42ab-88bc-9bcdea60315c" />
 
-# StellarSend
 
 **StellarSend** is a non-custodial, global money-transfer platform built entirely on the [Stellar](https://stellar.org) network. It lets anyone send value — XLM, USDC, or any Stellar-based (SEP-41) token — to anyone else, anywhere, with 3–5 second settlement and no intermediary ever holding the funds.
 
