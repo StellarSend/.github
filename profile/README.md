@@ -1,4 +1,4 @@
-<img width="340" height="288" alt="stellarsend" src="https://github.com/user-attachments/assets/02614d2d-f331-42ab-88bc-9bcdea60315c" />
+<img width="170" height="144" alt="stellarsend" src="https://github.com/user-attachments/assets/02614d2d-f331-42ab-88bc-9bcdea60315c" />
 
 # StellarSend
 
