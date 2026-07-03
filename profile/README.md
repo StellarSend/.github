@@ -15,6 +15,13 @@ The project is split into three repositories that together form the full stack: 
 - **Protocol fee model** — a small basis-point fee is deducted at the smart-contract level and routed to a dedicated fee-collection contract, auditable on-ledger.
 - **Testnet/Mainnet support** — the same stack runs against Stellar testnet (for development) or mainnet (for production) with a one-click toggle.
 
+Any wallet can send a single payment. What makes StellarSend more than a wallet is a set of differentiators built directly into the on-chain contracts, not bolted on in a centralized backend:
+
+- **Scheduled & recurring payments** — authorize a transfer once; it executes on schedule without you being online, via an on-chain token allowance rather than a trusted third party holding your keys.
+- **Split / batch payments** — pay many recipients in a single, atomic transaction — payroll, group bills, revenue splits.
+- **Payment requests / invoicing** — generate a shareable request (with a QR code) that turns StellarSend into a two-sided payment tool, not just an outbound wallet.
+- **Escrow / conditional transfers** — lock funds on-chain until a time or arbiter condition releases them, for deposits, marketplace holdbacks, or milestone payments.
+
 ## How the pieces fit together
 
 ```
@@ -41,11 +48,12 @@ Soroban smart contracts (Rust) that power the protocol on-chain:
 
 | Contract | Role |
 |---|---|
-| `stellar_send` | Main entry point — direct transfers and DEX path payments, fee deduction, pause/unpause, two-step admin rotation |
+| `stellar_send` | Main entry point — direct transfers, DEX path payments, fee deduction, pause/unpause, two-step admin rotation, subscriptions, batch payments, payment requests |
 | `fee_collector` | Accumulates protocol fees per token, admin withdrawal |
 | `token_bridge` | Wraps/unwraps assets to enable cross-asset path payments |
+| `escrow` | Locks funds until a time or arbiter condition releases them |
 
-`stellar_send` is the only contract end users interact with; `fee_collector` and `token_bridge` are protocol-managed infrastructure.
+`stellar_send` and `escrow` are the contracts end users interact with; `fee_collector` and `token_bridge` are protocol-managed infrastructure.
 
 ### [`frontend`](https://github.com/StellarSend/frontend)
 
@@ -55,6 +63,7 @@ The web application users interact with — React 18 + TypeScript + Vite, styled
 - Live balances and transaction history pulled from Horizon
 - Send flow with quotes, slippage tolerance, and path-payment support
 - Activity charts, paginated transaction history, dark-navy UI
+- Subscriptions, batch send, payment requests (with QR codes), and escrow pages — all signed client-side, same as a regular send
 
 ### [`backend`](https://github.com/StellarSend/backend)
 
@@ -64,6 +73,7 @@ Supporting API written in Rust (`axum` + `sqlx` + PostgreSQL).
 - Payment quotes and send orchestration
 - Transaction history storage and pagination
 - Account balance and exchange-rate endpoints, with Horizon as the source of truth
+- Subscription, batch-payment, payment-request, and escrow endpoints, plus a keeper service that submits pre-authorized on-chain actions (e.g. due recurring payments) without ever holding user funds or keys
 
 ---
 
