@@ -14,7 +14,7 @@ None of this is a centralized feature layer bolted on top of a wallet integratio
 
 The project is split into three repositories that together form the full stack: on-chain contracts, a Rust API backend, and a React web frontend.
 
-<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/140020d2-33fb-48e8-9dc9-7d85c256a5bf" />
+<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/140020d2-33fb-48e8-9dc9-7d85c256a5bf" />
 
 
 ## What StellarSend does
