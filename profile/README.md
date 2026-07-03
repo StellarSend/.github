@@ -16,7 +16,7 @@ The project is split into three repositories that together form the full stack: 
 
 We are on X - https://x.com/stellar_send/
 
-<img width="850" height="500" alt="image" src="https://github.com/user-attachments/assets/140020d2-33fb-48e8-9dc9-7d85c256a5bf" />
+<img width="850" height="500" alt="image" src="https://github.com/user-attachments/assets/7b69740b-e7b6-4869-b819-9dc9dcd75e91" />
 
 
 ## What StellarSend does
