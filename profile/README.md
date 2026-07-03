@@ -13,6 +13,7 @@
 None of this is a centralized feature layer bolted on top of a wallet integration — it's implemented as public functions in the [`contracts`](https://github.com/StellarSend/contracts) repo, so the guarantees come from the chain, not from trusting StellarSend's servers.
 
 The project is split into three repositories that together form the full stack: on-chain contracts, a Rust API backend, and a React web frontend.
+X - https://x.com/stellar_send/
 
 <img width="850" height="500" alt="image" src="https://github.com/user-attachments/assets/140020d2-33fb-48e8-9dc9-7d85c256a5bf" />
 
