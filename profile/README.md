@@ -1,7 +1,7 @@
 # StellarSend <img width="42" height="30" alt="stellarsend" src="https://github.com/user-attachments/assets/02614d2d-f331-42ab-88bc-9bcdea60315c" />
 
 
-**StellarSend** is a non-custodial, global money-transfer platform built entirely on the [Stellar](https://stellar.org) network. It lets anyone send value — XLM, USDC, or any Stellar-based (SEP-41) token — to anyone else, anywhere, with 3–5 second settlement and no intermediary ever holding the funds.
+**StellarSend** is a non-custodial, global money-transfer platform built entirely on the [Stellar](https://stellar.org) network. It lets anyone send value XLM, USDC, or any Stellar-based (SEP-41) token to anyone else, anywhere, with 3–5 second settlement and no intermediary ever holding the funds.
 
 **What makes it different:** any wallet e.g Freighter, Lobstr, xBull can already do a single non-custodial send. That's table stakes, not a product. StellarSend is built to do the things a plain wallet structurally can't, because the logic lives on-chain in Soroban contracts rather than in a UI wrapper around a wallet:
 
