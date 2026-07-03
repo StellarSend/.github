@@ -3,6 +3,15 @@
 
 **StellarSend** is a non-custodial, global money-transfer platform built entirely on the [Stellar](https://stellar.org) network. It lets anyone send value — XLM, USDC, or any Stellar-based (SEP-41) token — to anyone else, anywhere, with 3–5 second settlement and no intermediary ever holding the funds.
 
+**What makes it different:** any wallet — Freighter, Lobstr, xBull — can already do a single non-custodial send. That's table stakes, not a product. StellarSend is built to do the things a plain wallet structurally can't, because the logic lives on-chain in Soroban contracts rather than in a UI wrapper around a wallet:
+
+- **Pay on a schedule without being online.** A plain wallet needs you present, unlocked, and signing at the moment of every payment. StellarSend lets you authorize a recurring transfer once — the on-chain contract enforces it via a token allowance and executes it on schedule, with no custodian ever holding your keys or funds in between.
+- **Pay many people in one atomic step.** A wallet sends one payment per signature. StellarSend fans one signed transaction out to many recipients — payroll, group bills, revenue splits — and it's all-or-nothing, not a loop of individually-fallible sends.
+- **Get paid, not just send.** A wallet has no concept of "request money." StellarSend can generate a shareable, QR-codeable invoice that anyone can fulfill, making it a two-sided payment tool instead of a one-way pipe.
+- **Hold funds under a condition, not just a destination.** A wallet's only primitive is "send it, it's gone." StellarSend can lock funds in an on-chain escrow that releases only after a time window or an arbiter's decision — for deposits, marketplace holdbacks, or milestone payments — without trusting a company to hold the money in between.
+
+None of this is a centralized feature layer bolted on top of a wallet integration — it's implemented as public functions in the [`contracts`](https://github.com/StellarSend/contracts) repo, so the guarantees come from the chain, not from trusting StellarSend's servers.
+
 The project is split into three repositories that together form the full stack: on-chain contracts, a Rust API backend, and a React web frontend.
 
 ---
@@ -14,13 +23,10 @@ The project is split into three repositories that together form the full stack: 
 - **Path payments** — automatic routing through the Stellar DEX so a sender can pay in one asset and the recipient receives another, with live slippage/price-impact quotes.
 - **Protocol fee model** — a small basis-point fee is deducted at the smart-contract level and routed to a dedicated fee-collection contract, auditable on-ledger.
 - **Testnet/Mainnet support** — the same stack runs against Stellar testnet (for development) or mainnet (for production) with a one-click toggle.
-
-Any wallet can send a single payment. What makes StellarSend more than a wallet is a set of differentiators built directly into the on-chain contracts, not bolted on in a centralized backend:
-
-- **Scheduled & recurring payments** — authorize a transfer once; it executes on schedule without you being online, via an on-chain token allowance rather than a trusted third party holding your keys.
-- **Split / batch payments** — pay many recipients in a single, atomic transaction — payroll, group bills, revenue splits.
-- **Payment requests / invoicing** — generate a shareable request (with a QR code) that turns StellarSend into a two-sided payment tool, not just an outbound wallet.
-- **Escrow / conditional transfers** — lock funds on-chain until a time or arbiter condition releases them, for deposits, marketplace holdbacks, or milestone payments.
+- **Scheduled & recurring payments** — see above.
+- **Split / batch payments** — see above.
+- **Payment requests / invoicing** — see above.
+- **Escrow / conditional transfers** — see above.
 
 ## How the pieces fit together
 
